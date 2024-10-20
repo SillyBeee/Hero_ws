@@ -14,12 +14,45 @@ namespace armor{
 
         private:
         
+            /**
+            *
+            * @brief 用于创建一个重投影器对象       
+            * */
             std::unique_ptr<DoReproj> create_reprojector();
-    }
+            
+            /** 
+            *
+            * @brief 用于创建一个子弹检测器对象
+            */
+            std::unique_ptr<DetectBullet> create_ballet_dectector();
+            
+            /** 
+            *
+            * @brief 用于订阅图像消息，并调用检测器进行检测
+            */
+            void ImageCallback(const sensor_msgs::msg::Image::SharedPtr msg);
+            
+            /** 
+            * @brief 创建一个调试发布者，用于发布标有子弹位置的图像
+            */
+            void CreateDebugPublishers();
+            
+            /** 
+            * @brief 销毁调试发布者
+            */
+            void DestroyDebugPublishers();
+            
+            bool debug_;
+            
+
+            
+            
+            
+    };
 
 
 
-
+}
 
 
 
@@ -34,4 +67,3 @@ namespace armor{
 
 
     
-}
